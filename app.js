@@ -39,3 +39,18 @@ $.ajax({
         alert('error loading orders');
     }
 });
+
+$orders.delegate('.remove', 'click', function() {
+
+    var $items = $('#remove');
+
+    $.ajax({
+        type: 'DELETE',
+        url: 'http://rest.learncode.academy/api/learncode/friends/' + $(this).attr('data-id'),
+        success: function() {
+            $items.fadeOut(300, function() {
+                $(this).remove();
+            });
+        }
+    });
+});
